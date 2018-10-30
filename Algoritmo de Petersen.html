@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Algoritmo de Petersen</title>
+    <meta name="viewport" content="user-scalable=no, width=device-width,initial-scale=1">
+    <style media="screen">
+      table,th,td,tr{
+        border: 2px solid #1565c0;
+        text-align: right;
+        padding: 5px;
+        margin: 0 auto;
+        border-collapse: collapse;
+      }
+      th{
+        background: #0d47a1;
+        color: white;
+      }
+      body{
+        text-align: center;
+        color: #0d47a1;
+      }
+      div{
+          text-align: center;
+      }
+      input,input:active{
+        padding: 5px 20px 5px 20px;
+        border: 2px solid #0d47a1;
+        background: #0d47a1;
+        color: white;
+      }
+      input:hover{
+        border: 2px solid #1565c0;
+        background: #1565c0;
+      }
+     div input{
+        padding: 5px 20px 5px 20px;
+        border: 2px solid #0d47a1;
+        background: white;
+        color: #0d47a1;
+      }
+      div input:hover{
+        background: white;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Aquí se realizará la función</h1>
+    </header>
+    <nav>
+      <form class="" action="" method="post">
+        <div>
+
+          <input type="number" id="number1" value="" placeholder="Ingrese Critico del P1">
+          <br><br>
+          <input type="number" id="number2" value="" placeholder="Ingrese fin del Critico del P1">
+          <br><br>
+          <input type="number" id="number3" value="" placeholder="Ingrese Critico del P2">
+          <br><br>
+          <input type="number" id="number4" value="" placeholder="Ingrese fin del Critico del P2">
+          <br><br>
+
+        </div>
+
+      <input type="button" name="" id="Iniciar" value="Iniciar" onclick="INICIAR()">
+
+      </form>
+      <br><br>
+        <table id="TABLE">
+          <tr>
+            <th>Primer proceso</th>
+            <th>Segundo proceso</th>
+          </tr>
+      </div>
+
+        <script>
+
+          var INICIAR = function() {
+            var P1_INICIO = document.getElementById("number1").value;
+            var P1_FIN = document.getElementById("number2").value;
+            var P2_INICIO = document.getElementById("number3").value;
+            var P2_FIN = document.getElementById("number4").value;
+
+            var C_C = 0;
+            var P1 = 0;
+            var P2 = 0;
+            var TURNO = 0;
+            var TABLE = document.getElementById("TABLE");
+
+            for(i=1;P1<10;i++){
+              C_C = P1 + P2;
+                  if(i%2!=0 && (P2<P2_INICIO || P2>=P2_FIN)){
+                      P1+=1;
+                      i=1;
+                      TURNO = 1;
+
+                  }else if((P1<P1_INICIO || P1>=P1_FIN) && P2<16){
+                      P2+=2
+                      i=2;
+                      TURNO = 2;
+                  }
+
+                  if (C_C != P1 + P2){
+                    var TABLE_NUEVA_LINEA = document.createElement("tr");
+                        var TABLE_DATE_P1 = document.createElement("td");
+                        var TABLE_DATE_P2 = document.createElement("td");
+
+                            if (TURNO == 1){
+                              var  TABLE_DATE_CON_P1 = document.createTextNode("Turno " + P1);
+                              var TABLE_DATE_CON_P2 = document.createTextNode(P2);
+                            }else{
+                              var  TABLE_DATE_CON_P1 = document.createTextNode(P1);
+                              var TABLE_DATE_CON_P2 = document.createTextNode("Turno " + P2);
+                            }
+
+                        TABLE_DATE_P1.appendChild(TABLE_DATE_CON_P1);
+                        TABLE_NUEVA_LINEA.appendChild(TABLE_DATE_P1);
+                        TABLE_DATE_P2.appendChild(TABLE_DATE_CON_P2);
+                        TABLE_NUEVA_LINEA.appendChild(TABLE_DATE_P2);
+                        TABLE.appendChild(TABLE_NUEVA_LINEA);
+                  }
+            }
+
+
+        }
+
+        </script>
+
+    </nav>
+  </body>
+</html>
